@@ -1,0 +1,2 @@
+# GiantCraft
+plugin for server
