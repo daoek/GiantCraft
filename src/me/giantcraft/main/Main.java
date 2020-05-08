@@ -22,6 +22,7 @@ public class Main extends JavaPlugin {
 		this.getCommand("gchelp").setExecutor(new Cmd_Help()); // Loading the 'help' command.
 		getLogger().info(Color.GREEN + "Plugin has been enabled!"); // Let the user know that the plugin is enabled!
 	}
+	
 
 	@Override
 	public void onDisable() {
