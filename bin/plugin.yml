@@ -9,4 +9,6 @@ commands:
       description: Help for GiantCraft Core commands
       aliases: [gch]
       usage: /<command>
-      
+   guess:
+      description: Playing a guess game!
+      ussage: /<command>

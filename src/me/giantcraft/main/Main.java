@@ -14,6 +14,7 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
+		
 		// TODO: Loading in configuration file
 		ConfigManager = new ConfigManager();
 		ConfigManager.setup();
@@ -21,6 +22,8 @@ public class Main extends JavaPlugin {
 		
 		// TODO: Loading commands
 		this.getCommand("gchelp").setExecutor(new Cmd_Help()); // Loading the 'help' command.
+		this.getCommand("guess").setExecutor(new Cmd_Help());
+		
 		getLogger().info(Color.GREEN + "Plugin has been enabled!"); // Let the user know that the plugin is enabled!
 	}
 	
