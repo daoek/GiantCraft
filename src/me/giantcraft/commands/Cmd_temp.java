@@ -15,13 +15,10 @@ public class Cmd_temp implements CommandExecutor {
 		if (sender instanceof Player) {			// If the command is executed by the player
 			Player player = (Player) sender;
 			
-			// Code that will be executed when this cmd is entered.
-			player.sendMessage(Color.RED + "-= GiantCraft command list =-");
-			player.sendMessage("");
-			player.sendMessage(Color.YELLOW + "There are no commands yet!");
+			// TODO: Put your code here!
 		}
 		
-		return false;		// Return something..
+		return false;		// Return something.. (You can leave this at 'false')
 	}
 
 }

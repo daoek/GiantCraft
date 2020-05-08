@@ -19,7 +19,7 @@ public class Main extends JavaPlugin {
 			// TODO: Loading in configuration file
 
 			// TODO: Loading commands
-			this.getCommand("help").setExecutor(new Cmd_Help());  // Loading the 'help' command.
+			this.getCommand("gchelp").setExecutor(new Cmd_Help());  // Loading the 'help' command.
 			
 			getLogger().info(Color.GREEN + "Plugin has been enabled!");	// Let the user know that the plugin is enabled!
 		}
