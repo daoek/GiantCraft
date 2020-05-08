@@ -9,12 +9,13 @@ import me.giantcraft.commands.Cmd_Help;
 public class Main extends JavaPlugin {
 
 	// Global game variables
-	public ConfigManager ConfigManager = new ConfigManager();
+	public ConfigManager ConfigManager;
 	
 	
 	@Override
 	public void onEnable() {
 		// TODO: Loading in configuration file
+		ConfigManager = new ConfigManager();
 		ConfigManager.setup();
 		
 		
@@ -26,6 +27,7 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+		ConfigManager.saveCustomMobs();
 		getLogger().info(Color.RED + "Plugin has been disabled!"); // Saying bye to you!
 	}
 

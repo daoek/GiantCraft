@@ -6,6 +6,7 @@ authors: [Maerciezz, daoek, MetalRabbit]
 prefix: GC
 commands:
    gchelp:
-       description: get help fot GiantCraft Core commands
-       aliases: [gc]
-       usage: /<command>
+      description: Help for GiantCraft Core commands
+      aliases: [gch]
+      usage: /<command>
+      
