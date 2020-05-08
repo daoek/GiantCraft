@@ -1,0 +1,6 @@
+name. GiantCraft_Core
+main: me.giantcraft.main
+version: 0.0.1
+description: The core plugin for GiantCraft
+authors: [Maerciezz, daoek, MetalRabbit]
+prefix: GC
