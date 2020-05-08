@@ -21,7 +21,7 @@ public class Cmd_Help implements CommandExecutor {
 			player.sendMessage(Color.YELLOW + "There are no commands yet!");
 		}
 		
-		return false;		// Return something..
+		return true;		// Return something..
 	}
 
 }

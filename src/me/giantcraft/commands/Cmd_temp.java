@@ -1,6 +1,5 @@
 package me.giantcraft.commands;
 
-import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,7 +13,7 @@ public class Cmd_temp implements CommandExecutor {
 		
 		if (sender instanceof Player) {			// If the command is executed by the player
 			Player player = (Player) sender;
-			
+			player.sendMessage("hoi");
 			// TODO: Put your code here!
 		}
 		
