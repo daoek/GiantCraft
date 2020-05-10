@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 // Command packages
 import me.giantcraft.commands.Cmd_Help;
 import me.giantcraft.commands.Cmd_Test;
+import me.giantcraft.rewards.*;
 
 public class Main extends JavaPlugin {
 
@@ -19,13 +20,27 @@ public class Main extends JavaPlugin {
 		ConfigManager.setup();
 		custommobs = new CustomMobs();
 		
-		// TODO: Loading commands
+		///
+		// COMMANDS
+		///
+		
+		// General
 		this.getCommand("gchelp").setExecutor(new Cmd_Help()); // Loading the 'help' command.
+		
+		// Guessing game
 		this.getCommand("guess").setExecutor(new Cmd_Test());
 		
-		// Registring all events
+		// Periodic reward system
+		this.getCommand("redeem").setExecutor(new Cmd_redeem());
+		
+		///
+		// EVENTS
+		///
 		getServer().getPluginManager().registerEvents(new Events(this), this);
 		getServer().getPluginManager().registerEvents(new Cmd_Test(), this);
+		getServer().getPluginManager().registerEvents(new GuiReward(), this);
+		
+		
 		
 		getLogger().info(ChatColor.GREEN + "Plugin has been enabled!"); // Let the user know that the plugin is enabled!
 	}

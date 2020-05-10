@@ -12,3 +12,6 @@ commands:
    guess:
       description: Playing a guess game!
       ussage: /<command>
+   redeem:
+      description: test command for the rewards inventory
+      usage: /<command>
