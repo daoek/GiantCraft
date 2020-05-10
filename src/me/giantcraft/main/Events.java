@@ -24,7 +24,6 @@ public class Events implements Listener{
 	@EventHandler
 	public void onBreakBlock(BlockBreakEvent event)
 	{
-		main.custommobs.SpawnCustomMob("CREEPER", event.getBlock().getLocation().add(0,1,0), event.getPlayer().getWorld());
+		main.custommobs.SpawnCustomMob("creeper", event.getBlock().getLocation().add(0,1,0), event.getPlayer().getWorld());
 	}
-	
 }

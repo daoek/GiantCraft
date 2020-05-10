@@ -47,9 +47,9 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		
 		ConfigManager.saveCustomMobs();
 		ConfigManager.saveWaves();
+		
 		getLogger().info(ChatColor.RED + "Plugin has been disabled!"); // Saying bye to you!
 	
 	}
