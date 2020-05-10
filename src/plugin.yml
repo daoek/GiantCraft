@@ -3,7 +3,7 @@ main: me.giantcraft.main.Main
 version: 0.0.2
 description: The core plugin for GiantCraft
 authors: [Maerciezz, daoek, MetalRabbit]
-prefix: GC
+prefix: GiantCraft
 commands:
    gchelp:
       description: Help for GiantCraft Core commands
