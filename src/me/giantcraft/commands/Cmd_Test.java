@@ -8,15 +8,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.Listener;
 
-public class Cmd_Test implements CommandExecutor {
+public class Cmd_Test implements CommandExecutor, Listener {
 	
-	int result = 0;
+	public static int result = 0;
 	Random rnd = new Random();
 	
-	boolean guessing = false;
+	public static boolean guessing = false;
 	
 	// The full code for this command
 	@Override
@@ -34,26 +33,4 @@ public class Cmd_Test implements CommandExecutor {
 		
 		return true;
 	}
-	
-	@EventHandler
-	public void onPlayerChat(AsyncPlayerChatEvent event) {
-		
-		if (guessing = true) 
-		{
-			if (event.getMessage().contains(Integer.toString(result))) {
-		        Bukkit.broadcastMessage(ChatColor.GREEN + 
-		        		event.getPlayer().getName() + 
-		        		ChatColor.DARK_GREEN + 
-		        		"has won the battle!");
-		        
-		        guessing = false;
-		    }
-		    else 
-		    {
-		    	event.getPlayer().sendMessage(ChatColor.DARK_RED + "Saik! Thats the wrong number! OOOOOOOH!");
-		    }
-		}
-	    
-	}
-
 }
