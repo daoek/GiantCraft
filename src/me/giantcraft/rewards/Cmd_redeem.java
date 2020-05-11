@@ -16,11 +16,13 @@ public class Cmd_redeem implements CommandExecutor {
 		if (sender instanceof Player) {			// If the command is executed by the player
 			Player player = (Player) sender;
 			
-			rewards.openInv(player);
+			//rewards.openInv(player);
+			rewards.giveReward(player.getPlayer());
+			
 			player.sendMessage("Opening Rewards menu.");
 		}
 		
-		return false;		// Return something.. (You can leave this at 'false')
+		return true;		// Return something.. (You can leave this at 'false')
 	}
 
 }
