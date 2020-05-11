@@ -6,19 +6,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 // Command packages
 import me.giantcraft.commands.Cmd_Help;
 import me.giantcraft.commands.Cmd_Test;
+import me.giantcraft.custommobs.CustomMobSpawning;
 import me.giantcraft.rewards.*;
 
 public class Main extends JavaPlugin {
 
 	// Global game variables
 	public ConfigManager ConfigManager;
-	public CustomMobs custommobs;
+	public CustomMobSpawning custommobs;
 	
 	@Override
 	public void onEnable() {
 		ConfigManager = new ConfigManager();
 		ConfigManager.setup();
-		custommobs = new CustomMobs();
+		custommobs = new CustomMobSpawning();
 		
 		///
 		// COMMANDS
@@ -39,7 +40,6 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Events(this), this);
 		getServer().getPluginManager().registerEvents(new Cmd_Test(), this);
 		getServer().getPluginManager().registerEvents(new GuiReward(), this);
-		
 		
 		
 		getLogger().info(ChatColor.GREEN + "Plugin has been enabled!"); // Let the user know that the plugin is enabled!
