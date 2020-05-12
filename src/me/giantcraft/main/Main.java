@@ -6,20 +6,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 // Command packages
 import me.giantcraft.commands.Cmd_Help;
 import me.giantcraft.commands.Cmd_Test;
-import me.giantcraft.custommobs.CustomMobSpawning;
-import me.giantcraft.rewards.*;
+import me.giantcraft.custommobs.CustomMobManager;
+import me.giantcraft.rewards.Cmd_redeem;
+import me.giantcraft.rewards.GuiReward;
 
 public class Main extends JavaPlugin {
 
 	// Global game variables
 	public ConfigManager ConfigManager;
-	public CustomMobSpawning custommobs;
+	public CustomMobManager customMobsManager;
 	
 	@Override
 	public void onEnable() {
 		ConfigManager = new ConfigManager();
 		ConfigManager.setup();
-		custommobs = new CustomMobSpawning();
+		customMobsManager = new CustomMobManager(this);
 		
 		///
 		// COMMANDS
