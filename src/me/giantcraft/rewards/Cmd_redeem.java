@@ -17,7 +17,7 @@ public class Cmd_redeem implements CommandExecutor {
 			Player player = (Player) sender;
 			
 			//rewards.openInv(player);
-			rewards.giveReward(player.getPlayer());
+			//rewards.giveReward(player.getPlayer());
 			
 			player.sendMessage("Opening Rewards menu.");
 		}

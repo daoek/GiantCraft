@@ -21,7 +21,9 @@ public class Main extends JavaPlugin {
 		ConfigManager = new ConfigManager();
 		ConfigManager.setup();
 		customMobsManager = new CustomMobManager(this);
-		
+		getServer().broadcastMessage("import mobs config before");
+		customMobsManager.ImportCustomMobsFromConfig();
+		getServer().broadcastMessage("import mobs config after");
 		///
 		// COMMANDS
 		///
@@ -48,6 +50,8 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+		ConfigManager.reloadCustomMobs();
+		ConfigManager.reloadWaves();
 		ConfigManager.saveCustomMobs();
 		ConfigManager.saveWaves();
 		

@@ -1,27 +1,13 @@
 package me.giantcraft.rewards;
 
-import java.util.Arrays;
-import java.util.Random;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.FireworkEffect.Type;
-import org.bukkit.Material;
-import org.bukkit.entity.Firework;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class GuiReward implements Listener {
 
+	/*remove this comment for the code
+	 * 
+	 * 
+	 * 
 	private Inventory inv;
 
 	// Pretty important!!
@@ -180,4 +166,5 @@ public class GuiReward implements Listener {
 		
 		
 	}
+	*/
 }
