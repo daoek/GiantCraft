@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.loot.LootTable;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.util.Vector;
 
@@ -17,7 +16,7 @@ public class CustomMob {
 	
 	public int health = 20;
 	
-	public LootTable loot = null;
+	public ItemStack[] loot = null;
 
 	public String target = null;
 	

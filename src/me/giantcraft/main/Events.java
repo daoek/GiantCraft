@@ -25,7 +25,7 @@ public class Events implements Listener{
 	@EventHandler
 	public void onBreakBlock(BlockBreakEvent event)
 	{
-		main.customMobsManager.customMobSpawning.SpawnCustomMob(event.getBlock().getLocation(), event.getBlock().getWorld(), main.customMobsManager.getCustomMobProfile("LV79"));
+		main.customMobsManager.customMobSpawning.SpawnCustomMob(event.getBlock().getLocation(), event.getBlock().getWorld(), main.customMobsManager.getCustomMobProfileFromConfigName("LV79"));
 	}
 	
 	@EventHandler

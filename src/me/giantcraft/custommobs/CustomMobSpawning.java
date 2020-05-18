@@ -19,7 +19,6 @@ import org.bukkit.entity.Spider;
 import org.bukkit.entity.Witch;
 import org.bukkit.entity.WitherSkeleton;
 import org.bukkit.entity.Zombie;
-import org.bukkit.loot.LootTable;
 
 public class CustomMobSpawning {
 	
@@ -67,7 +66,6 @@ public class CustomMobSpawning {
 			snowman.setCustomNameVisible(true);
 			snowman.setMaxHealth(customMob.health);
 			snowman.setHealth(customMob.health);
-			snowman.setLootTable(customMob.loot);
 			snowman.setPersistent(customMob.despawnable);
 			snowman.setSilent(customMob.silent);
 			snowman.setVelocity(customMob.velocity);
@@ -95,7 +93,6 @@ public class CustomMobSpawning {
 			creeper.setCustomNameVisible(true);
 			creeper.setMaxHealth(customMob.health);
 			creeper.setHealth(customMob.health);
-			creeper.setLootTable(customMob.loot);
 			creeper.setPersistent(customMob.despawnable);
 			creeper.setSilent(customMob.silent);
 			creeper.setVelocity(customMob.velocity);
@@ -123,7 +120,6 @@ public class CustomMobSpawning {
 			enderman.setCustomNameVisible(true);
 			enderman.setMaxHealth(customMob.health);
 			enderman.setHealth(customMob.health);
-			enderman.setLootTable(customMob.loot);
 			enderman.setPersistent(customMob.despawnable);
 			enderman.setSilent(customMob.silent);
 			enderman.setVelocity(customMob.velocity);
@@ -151,7 +147,6 @@ public class CustomMobSpawning {
 			spider.setCustomNameVisible(true);
 			spider.setMaxHealth(customMob.health);
 			spider.setHealth(customMob.health);
-			spider.setLootTable(customMob.loot);
 			spider.setPersistent(customMob.despawnable);
 			spider.setSilent(customMob.silent);
 			spider.setVelocity(customMob.velocity);
@@ -179,7 +174,6 @@ public class CustomMobSpawning {
 			magmacube.setCustomNameVisible(true);
 			magmacube.setMaxHealth(customMob.health);
 			magmacube.setHealth(customMob.health);
-			magmacube.setLootTable(customMob.loot);
 			magmacube.setPersistent(customMob.despawnable);
 			magmacube.setSilent(customMob.silent);
 			magmacube.setVelocity(customMob.velocity);
@@ -207,7 +201,6 @@ public class CustomMobSpawning {
 			skeleton.setCustomNameVisible(true);
 			skeleton.setMaxHealth(customMob.health);
 			skeleton.setHealth(customMob.health);
-			skeleton.setLootTable(customMob.loot);
 			skeleton.setPersistent(customMob.despawnable);
 			skeleton.setSilent(customMob.silent);
 			skeleton.setVelocity(customMob.velocity);
@@ -235,7 +228,6 @@ public class CustomMobSpawning {
 			ghast.setCustomNameVisible(true);
 			ghast.setMaxHealth(customMob.health);
 			ghast.setHealth(customMob.health);
-			ghast.setLootTable(customMob.loot);
 			ghast.setPersistent(customMob.despawnable);
 			ghast.setSilent(customMob.silent);
 			ghast.setVelocity(customMob.velocity);
@@ -263,7 +255,6 @@ public class CustomMobSpawning {
 			zombie.setCustomNameVisible(true);
 			zombie.setMaxHealth(customMob.health);
 			zombie.setHealth(customMob.health);
-			zombie.setLootTable(customMob.loot);
 			zombie.setPersistent(customMob.despawnable);
 			zombie.setSilent(customMob.silent);
 			zombie.setVelocity(customMob.velocity);
@@ -291,7 +282,6 @@ public class CustomMobSpawning {
 			slime.setCustomNameVisible(true);
 			slime.setMaxHealth(customMob.health);
 			slime.setHealth(customMob.health);
-			slime.setLootTable(customMob.loot);
 			slime.setPersistent(customMob.despawnable);
 			slime.setSilent(customMob.silent);
 			slime.setVelocity(customMob.velocity);
@@ -319,7 +309,6 @@ public class CustomMobSpawning {
 			silverfish.setCustomNameVisible(true);
 			silverfish.setMaxHealth(customMob.health);
 			silverfish.setHealth(customMob.health);
-			silverfish.setLootTable(customMob.loot);
 			silverfish.setPersistent(customMob.despawnable);
 			silverfish.setSilent(customMob.silent);
 			silverfish.setVelocity(customMob.velocity);
@@ -347,7 +336,6 @@ public class CustomMobSpawning {
 			cavespider.setCustomNameVisible(true);
 			cavespider.setMaxHealth(customMob.health);
 			cavespider.setHealth(customMob.health);
-			cavespider.setLootTable(customMob.loot);
 			cavespider.setPersistent(customMob.despawnable);
 			cavespider.setSilent(customMob.silent);
 			cavespider.setVelocity(customMob.velocity);
@@ -375,7 +363,6 @@ public class CustomMobSpawning {
 			zombiepigman.setCustomNameVisible(true);
 			zombiepigman.setMaxHealth(customMob.health);
 			zombiepigman.setHealth(customMob.health);
-			zombiepigman.setLootTable(customMob.loot);
 			zombiepigman.setPersistent(customMob.despawnable);
 			zombiepigman.setSilent(customMob.silent);
 			zombiepigman.setVelocity(customMob.velocity);
@@ -403,7 +390,6 @@ public class CustomMobSpawning {
 			witch.setCustomNameVisible(true);
 			witch.setMaxHealth(customMob.health);
 			witch.setHealth(customMob.health);
-			witch.setLootTable(customMob.loot);
 			witch.setPersistent(customMob.despawnable);
 			witch.setSilent(customMob.silent);
 			witch.setVelocity(customMob.velocity);
@@ -431,7 +417,6 @@ public class CustomMobSpawning {
 			witherskeleton.setCustomNameVisible(true);
 			witherskeleton.setMaxHealth(customMob.health);
 			witherskeleton.setHealth(customMob.health);
-			witherskeleton.setLootTable(customMob.loot);
 			witherskeleton.setPersistent(customMob.despawnable);
 			witherskeleton.setSilent(customMob.silent);
 			witherskeleton.setVelocity(customMob.velocity);
@@ -459,7 +444,6 @@ public class CustomMobSpawning {
 			irongolem.setCustomNameVisible(true);
 			irongolem.setMaxHealth(customMob.health);
 			irongolem.setHealth(customMob.health);
-			irongolem.setLootTable(customMob.loot);
 			irongolem.setPersistent(customMob.despawnable);
 			irongolem.setSilent(customMob.silent);
 			irongolem.setVelocity(customMob.velocity);
@@ -487,7 +471,6 @@ public class CustomMobSpawning {
 			blaze.setCustomNameVisible(true);
 			blaze.setMaxHealth(customMob.health);
 			blaze.setHealth(customMob.health);
-			blaze.setLootTable(customMob.loot);
 			blaze.setPersistent(customMob.despawnable);
 			blaze.setSilent(customMob.silent);
 			blaze.setVelocity(customMob.velocity);
@@ -535,7 +518,6 @@ public class CustomMobSpawning {
 			snowman.setCustomNameVisible(true);
 			snowman.setMaxHealth(customMob.health);
 			snowman.setHealth(customMob.health);
-			snowman.setLootTable(customMob.loot);
 			snowman.setPersistent(customMob.despawnable);
 			snowman.setSilent(customMob.silent);
 			snowman.setVelocity(customMob.velocity);
@@ -563,7 +545,6 @@ public class CustomMobSpawning {
 			creeper.setCustomNameVisible(true);
 			creeper.setMaxHealth(customMob.health);
 			creeper.setHealth(customMob.health);
-			creeper.setLootTable(customMob.loot);
 			creeper.setPersistent(customMob.despawnable);
 			creeper.setSilent(customMob.silent);
 			creeper.setVelocity(customMob.velocity);
@@ -591,7 +572,6 @@ public class CustomMobSpawning {
 			enderman.setCustomNameVisible(true);
 			enderman.setMaxHealth(customMob.health);
 			enderman.setHealth(customMob.health);
-			enderman.setLootTable(customMob.loot);
 			enderman.setPersistent(customMob.despawnable);
 			enderman.setSilent(customMob.silent);
 			enderman.setVelocity(customMob.velocity);
@@ -619,7 +599,6 @@ public class CustomMobSpawning {
 			spider.setCustomNameVisible(true);
 			spider.setMaxHealth(customMob.health);
 			spider.setHealth(customMob.health);
-			spider.setLootTable(customMob.loot);
 			spider.setPersistent(customMob.despawnable);
 			spider.setSilent(customMob.silent);
 			spider.setVelocity(customMob.velocity);
@@ -647,7 +626,6 @@ public class CustomMobSpawning {
 			magmacube.setCustomNameVisible(true);
 			magmacube.setMaxHealth(customMob.health);
 			magmacube.setHealth(customMob.health);
-			magmacube.setLootTable(customMob.loot);
 			magmacube.setPersistent(customMob.despawnable);
 			magmacube.setSilent(customMob.silent);
 			magmacube.setVelocity(customMob.velocity);
@@ -675,7 +653,6 @@ public class CustomMobSpawning {
 			skeleton.setCustomNameVisible(true);
 			skeleton.setMaxHealth(customMob.health);
 			skeleton.setHealth(customMob.health);
-			skeleton.setLootTable(customMob.loot);
 			skeleton.setPersistent(customMob.despawnable);
 			skeleton.setSilent(customMob.silent);
 			skeleton.setVelocity(customMob.velocity);
@@ -703,7 +680,6 @@ public class CustomMobSpawning {
 			ghast.setCustomNameVisible(true);
 			ghast.setMaxHealth(customMob.health);
 			ghast.setHealth(customMob.health);
-			ghast.setLootTable(customMob.loot);
 			ghast.setPersistent(customMob.despawnable);
 			ghast.setSilent(customMob.silent);
 			ghast.setVelocity(customMob.velocity);
@@ -731,7 +707,6 @@ public class CustomMobSpawning {
 			zombie.setCustomNameVisible(true);
 			zombie.setMaxHealth(customMob.health);
 			zombie.setHealth(customMob.health);
-			zombie.setLootTable(customMob.loot);
 			zombie.setPersistent(customMob.despawnable);
 			zombie.setSilent(customMob.silent);
 			zombie.setVelocity(customMob.velocity);
@@ -759,7 +734,6 @@ public class CustomMobSpawning {
 			slime.setCustomNameVisible(true);
 			slime.setMaxHealth(customMob.health);
 			slime.setHealth(customMob.health);
-			slime.setLootTable(customMob.loot);
 			slime.setPersistent(customMob.despawnable);
 			slime.setSilent(customMob.silent);
 			slime.setVelocity(customMob.velocity);
@@ -787,7 +761,6 @@ public class CustomMobSpawning {
 			silverfish.setCustomNameVisible(true);
 			silverfish.setMaxHealth(customMob.health);
 			silverfish.setHealth(customMob.health);
-			silverfish.setLootTable(customMob.loot);
 			silverfish.setPersistent(customMob.despawnable);
 			silverfish.setSilent(customMob.silent);
 			silverfish.setVelocity(customMob.velocity);
@@ -815,7 +788,6 @@ public class CustomMobSpawning {
 			cavespider.setCustomNameVisible(true);
 			cavespider.setMaxHealth(customMob.health);
 			cavespider.setHealth(customMob.health);
-			cavespider.setLootTable(customMob.loot);
 			cavespider.setPersistent(customMob.despawnable);
 			cavespider.setSilent(customMob.silent);
 			cavespider.setVelocity(customMob.velocity);
@@ -842,8 +814,6 @@ public class CustomMobSpawning {
 			zombiepigman.setCustomName(customMob.name);
 			zombiepigman.setCustomNameVisible(true);
 			zombiepigman.setMaxHealth(customMob.health);
-			zombiepigman.setHealth(customMob.health);
-			zombiepigman.setLootTable(customMob.loot);
 			zombiepigman.setPersistent(customMob.despawnable);
 			zombiepigman.setSilent(customMob.silent);
 			zombiepigman.setVelocity(customMob.velocity);
@@ -871,7 +841,6 @@ public class CustomMobSpawning {
 			witch.setCustomNameVisible(true);
 			witch.setMaxHealth(customMob.health);
 			witch.setHealth(customMob.health);
-			witch.setLootTable(customMob.loot);
 			witch.setPersistent(customMob.despawnable);
 			witch.setSilent(customMob.silent);
 			witch.setVelocity(customMob.velocity);
@@ -899,7 +868,6 @@ public class CustomMobSpawning {
 			witherskeleton.setCustomNameVisible(true);
 			witherskeleton.setMaxHealth(customMob.health);
 			witherskeleton.setHealth(customMob.health);
-			witherskeleton.setLootTable(customMob.loot);
 			witherskeleton.setPersistent(customMob.despawnable);
 			witherskeleton.setSilent(customMob.silent);
 			witherskeleton.setVelocity(customMob.velocity);
@@ -927,7 +895,6 @@ public class CustomMobSpawning {
 			irongolem.setCustomNameVisible(true);
 			irongolem.setMaxHealth(customMob.health);
 			irongolem.setHealth(customMob.health);
-			irongolem.setLootTable(customMob.loot);
 			irongolem.setPersistent(customMob.despawnable);
 			irongolem.setSilent(customMob.silent);
 			irongolem.setVelocity(customMob.velocity);
@@ -955,7 +922,6 @@ public class CustomMobSpawning {
 			blaze.setCustomNameVisible(true);
 			blaze.setMaxHealth(customMob.health);
 			blaze.setHealth(customMob.health);
-			blaze.setLootTable(customMob.loot);
 			blaze.setPersistent(customMob.despawnable);
 			blaze.setSilent(customMob.silent);
 			blaze.setVelocity(customMob.velocity);

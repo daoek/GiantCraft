@@ -1,22 +1,12 @@
 package me.giantcraft.custommobs;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.loot.LootContext;
-import org.bukkit.loot.LootContext.Builder;
-import org.bukkit.loot.LootTable;
-import org.jetbrains.annotations.NotNull;
 
 import me.giantcraft.main.Main;
 
@@ -87,20 +77,7 @@ public class CustomMobManager {
 				ConfigMistake(Integer.toString(items.length));
 				if(items.length != 0)
 				{
-					Location location = new Location(main.getServer().getWorlds().get(1), 1, 1, 1);
-					Inventory inventory = Bukkit.createInventory(null, items.length);
-					Random random = new Random(1);
-					Builder lootContext = new LootContext.Builder(new Location(main.getServer().getWorlds().get(0), 0, 0, 0)); 
-					LootContext context = new LootContext(location, 1, 1, null, null); 
-					
-					inventory.setContents(items);
-					
-					ConfigMistake(items.toString());
-					
-					LootTable lootTable = null;
-					lootTable.fillInventory(inventory, random, lootContex);
-					
-					customImportedMobs.get(i).loot = lootTable;
+					customImportedMobs.get(i).loot = items;
 				}
 			}
 			//target
@@ -116,7 +93,7 @@ public class CustomMobManager {
 		main.getServer().broadcastMessage(ChatColor.DARK_RED + "ERROR in customMob config becouse: " + ChatColor.WHITE + reason);
 	}
 	
-	public CustomMob getCustomMobProfile(String ConfigName)
+	public CustomMob getCustomMobProfileFromConfigName(String ConfigName)
 	{
 		for(int i = 0; i < customImportedMobs.size(); i++)
 		{
@@ -130,6 +107,23 @@ public class CustomMobManager {
 		}
 		
 		ConfigMistake(ConfigName + " does not exist in customMobs config");		
+		return null;
+	}
+	
+	public CustomMob getCustomMobProfileFromMobName(String MobName)
+	{
+		for(int i = 0; i < customImportedMobs.size(); i++)
+		{
+			String mobname = customImportedMobs.get(i).name;
+			
+			if(mobname.equals(MobName.toString()))
+			{
+				return customImportedMobs.get(i);
+			}
+
+		}
+		
+		ConfigMistake(MobName + " does not exist in customMobs config");		
 		return null;
 	}
 }

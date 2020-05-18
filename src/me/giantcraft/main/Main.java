@@ -18,12 +18,15 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
+		///
+		//general
+		///
 		ConfigManager = new ConfigManager();
-		ConfigManager.setup();
+		ConfigManager.setup();		
 		customMobsManager = new CustomMobManager(this);
-		getServer().broadcastMessage("import mobs config before");
 		customMobsManager.ImportCustomMobsFromConfig();
-		getServer().broadcastMessage("import mobs config after");
+		
+		
 		///
 		// COMMANDS
 		///
