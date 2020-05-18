@@ -19,6 +19,7 @@ import org.bukkit.entity.Spider;
 import org.bukkit.entity.Witch;
 import org.bukkit.entity.WitherSkeleton;
 import org.bukkit.entity.Zombie;
+import org.bukkit.loot.LootTable;
 
 public class CustomMobSpawning {
 	

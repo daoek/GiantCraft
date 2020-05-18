@@ -3,13 +3,20 @@ package me.giantcraft.custommobs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.loot.LootContext;
+import org.bukkit.loot.LootContext.Builder;
 import org.bukkit.loot.LootTable;
+import org.jetbrains.annotations.NotNull;
 
 import me.giantcraft.main.Main;
 
@@ -58,25 +65,42 @@ public class CustomMobManager {
 			//Loot
 			if(customMobConfig.contains(currentConfigName + ".loot"))
 			{
-				Set<String> lootItems = customMobConfig.getConfigurationSection(currentConfigName + ".loot").getKeys(false);
-				Collection<ItemStack> items = new ArrayList<ItemStack>();
+				String[] lootItems = (String[]) customMobConfig.getConfigurationSection(currentConfigName + ".loot").getKeys(false).toArray();
+				ItemStack[] items = new ItemStack[lootItems.length];
 			
-				for (String item: lootItems) {
-					if(customMobConfig.contains(currentConfigName + ".loot." + item + "material") && customMobConfig.contains(currentConfigName + ".loot." + item + "amount"))
+				for (int j = 0; j < lootItems.length; j++) {
+					if(customMobConfig.contains(currentConfigName + ".loot." + lootItems[j] + ".material") && customMobConfig.contains(currentConfigName + ".loot." + lootItems[j] + ".amount"))
 					{
-						Material itemMaterial = Material.getMaterial(customMobConfig.getString(currentConfigName + ".loot." + item + ".material"));
-						int itemAmount = customMobConfig.getInt(currentConfigName + ".loot." + item + ".amount");
-						items.add(new ItemStack(itemMaterial,itemAmount));
+						Material itemMaterial = Material.getMaterial(customMobConfig.getString(currentConfigName + ".loot." + lootItems[j] + ".material"));
+						int itemAmount = customMobConfig.getInt(currentConfigName + ".loot." + lootItems[j] + ".amount");
+						items[j] = new ItemStack(itemMaterial,itemAmount);
+						
+						ConfigMistake(itemMaterial.toString());
+						ConfigMistake(Integer.toString(itemAmount));
 					}
 					else
 					{
-						ConfigMistake("no material or amount specified for: " + item + ". In customMob: " + currentConfigName);
+						ConfigMistake("no material or amount specified for: " + lootItems[j] + ". In customMob: " + currentConfigName);
 					}
 				}
 				
-				if(items.size() != 0)
+				ConfigMistake(Integer.toString(items.length));
+				if(items.length != 0)
 				{
-					customImportedMobs.get(i).loot = (LootTable) items;
+					Location location = new Location(main.getServer().getWorlds().get(1), 1, 1, 1);
+					Inventory inventory = Bukkit.createInventory(null, items.length);
+					Random random = new Random(1);
+					Builder lootContext = new LootContext.Builder(new Location(main.getServer().getWorlds().get(0), 0, 0, 0)); 
+					LootContext context = new LootContext(location, 1, 1, null, null); 
+					
+					inventory.setContents(items);
+					
+					ConfigMistake(items.toString());
+					
+					LootTable lootTable = null;
+					lootTable.fillInventory(inventory, random, lootContex);
+					
+					customImportedMobs.get(i).loot = lootTable;
 				}
 			}
 			//target
