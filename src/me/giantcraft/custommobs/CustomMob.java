@@ -16,7 +16,7 @@ public class CustomMob {
 	
 	public int health = 20;
 	
-	public ItemStack[] loot = null;
+	public Collection<ItemStack> loot = null;
 
 	public String target = null;
 	

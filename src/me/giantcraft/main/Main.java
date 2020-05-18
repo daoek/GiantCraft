@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 // Command packages
 import me.giantcraft.commands.Cmd_Help;
 import me.giantcraft.commands.Cmd_Test;
+import me.giantcraft.custommobs.CustomMobLootDropsManager;
 import me.giantcraft.custommobs.CustomMobManager;
 import me.giantcraft.rewards.Cmd_redeem;
 import me.giantcraft.rewards.GuiReward;
@@ -46,6 +47,7 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Events(this), this);
 		getServer().getPluginManager().registerEvents(new Cmd_Test(), this);
 		getServer().getPluginManager().registerEvents(new GuiReward(), this);
+		getServer().getPluginManager().registerEvents(new CustomMobLootDropsManager(this), this);
 		
 		
 		getLogger().info(ChatColor.GREEN + "Plugin has been enabled!"); // Let the user know that the plugin is enabled!

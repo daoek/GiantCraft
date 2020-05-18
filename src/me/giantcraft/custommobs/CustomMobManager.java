@@ -1,7 +1,9 @@
 package me.giantcraft.custommobs;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -55,27 +57,27 @@ public class CustomMobManager {
 			//Loot
 			if(customMobConfig.contains(currentConfigName + ".loot"))
 			{
-				String[] lootItems = (String[]) customMobConfig.getConfigurationSection(currentConfigName + ".loot").getKeys(false).toArray();
-				ItemStack[] items = new ItemStack[lootItems.length];
+				Set<String> lootItems = customMobConfig.getConfigurationSection(currentConfigName + ".loot").getKeys(false);
+				Collection<ItemStack> items = new ArrayList<ItemStack>();
 			
-				for (int j = 0; j < lootItems.length; j++) {
-					if(customMobConfig.contains(currentConfigName + ".loot." + lootItems[j] + ".material") && customMobConfig.contains(currentConfigName + ".loot." + lootItems[j] + ".amount"))
+				for (String item: lootItems) {
+					if(customMobConfig.contains(currentConfigName + ".loot." + item + ".material") && customMobConfig.contains(currentConfigName + ".loot." + item + ".amount"))
 					{
-						Material itemMaterial = Material.getMaterial(customMobConfig.getString(currentConfigName + ".loot." + lootItems[j] + ".material"));
-						int itemAmount = customMobConfig.getInt(currentConfigName + ".loot." + lootItems[j] + ".amount");
-						items[j] = new ItemStack(itemMaterial,itemAmount);
+						Material itemMaterial = Material.getMaterial(customMobConfig.getString(currentConfigName + ".loot." + item + ".material"));
+						int itemAmount = customMobConfig.getInt(currentConfigName + ".loot." + item + ".amount");
+						items.add(new ItemStack(itemMaterial,itemAmount));
 						
 						ConfigMistake(itemMaterial.toString());
 						ConfigMistake(Integer.toString(itemAmount));
 					}
 					else
 					{
-						ConfigMistake("no material or amount specified for: " + lootItems[j] + ". In customMob: " + currentConfigName);
+						ConfigMistake("no material or amount specified for: " + item + ". In customMob: " + currentConfigName);
 					}
 				}
 				
-				ConfigMistake(Integer.toString(items.length));
-				if(items.length != 0)
+				ConfigMistake(Integer.toString(items.size()));
+				if(items.size() != 0)
 				{
 					customImportedMobs.get(i).loot = items;
 				}
@@ -125,5 +127,20 @@ public class CustomMobManager {
 		
 		ConfigMistake(MobName + " does not exist in customMobs config");		
 		return null;
+	}
+	
+	public boolean isAnCustomMob(String MobName)
+	{
+		for(int i = 0; i < customImportedMobs.size(); i++)
+		{
+			String mobname = customImportedMobs.get(i).name;
+			
+			if(mobname.equals(MobName.toString()))
+			{
+				return true;
+			}
+
+		}
+		return false;
 	}
 }
