@@ -2,6 +2,7 @@ package me.giantcraft.custommobs;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +18,7 @@ public class CustomMob {
 	public int health = 20;
 	
 	public Collection<ItemStack> loot = null;
+	public List<Double> lootDropChance = null;
 
 	public String target = null;
 	
@@ -24,6 +26,7 @@ public class CustomMob {
 	
 	public Location tpLocation = null;
 	
+	public boolean dropDefaultLoot = true;
 	public boolean canPickUpItems = false;
 	public boolean despawnable = true;
 	public boolean silent = false;
@@ -35,12 +38,10 @@ public class CustomMob {
 	public ItemStack chestPlate = null;
 	public ItemStack helmet = null;
 	public ItemStack mainHand = null;
-	public ItemStack offHand = null;
 	
-	public float bootsDropChange = 0f;
-	public float leggingsDropChange = 0f;
-	public float chestPlateDropChange = 0f;
-	public float helmetDropChange = 0f;
-	public float mainHandDropChange = 0f;
-	public float offHandDropChange = 0f;
+	public float bootsDropChance = 0f;
+	public float leggingsDropChance = 0f;
+	public float chestPlateDropChance = 0f;
+	public float helmetDropChance = 0f;
+	public float mainHandDropChance = 0f;
 }

@@ -23,19 +23,13 @@ public class Events implements Listener{
 	}
 	
 	@EventHandler
-	public void onBreakBlock(BlockBreakEvent event)
+	public void onBlockBreak(BlockBreakEvent event)
 	{
-		main.customMobsManager.customMobSpawning.SpawnCustomMob(event.getBlock().getLocation(), event.getBlock().getWorld(), main.customMobsManager.getCustomMobProfileFromConfigName("LV79"));
+		
 	}
 	
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent event) {
-		//Player player = event.getPlayer();
 		
-		if(event.getMessage() == "gold") {
-			for(int i = 0; i<100; i++) {
-				//main.custommobs.SpawnCustomMob("creeper", player.getLocation().add(0, 50, 0), event.getPlayer().getWorld());
-			}
-		}
 	}
 }

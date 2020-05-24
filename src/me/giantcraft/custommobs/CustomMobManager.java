@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Set;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 
 import me.giantcraft.main.Main;
 
@@ -24,13 +28,13 @@ public class CustomMobManager {
 	public CustomMobManager(Main main)
 	{
 		this.main = main;
-		customMobConfig = main.ConfigManager.getCustomMobs();
 		customMobSpawning = new CustomMobSpawning(this);
+		customMobConfig = main.ConfigManager.getCustomMobs();
 		customImportedMobs = new ArrayList<CustomMob>();
 	}
 	
 	public void ImportCustomMobsFromConfig()
-	{	
+	{			
 		ConfigNames = customMobConfig.getKeys(false).toArray();
 		
 		for(int i = 0; i < ConfigNames.length; i++)
@@ -46,6 +50,7 @@ public class CustomMobManager {
 
 			//Display Name
 			if (customMobConfig.contains(currentConfigName + ".name")) { customImportedMobs.get(i).name = customMobConfig.getString(currentConfigName + ".name"); }
+			else { ConfigMistake("There is no name specified for customMob: " + currentConfigName); customImportedMobs.remove(i); return;}
 			
 			//MobType
 			if(customMobConfig.contains(currentConfigName + ".mobtype")) { customImportedMobs.get(i).mobTyp = customMobConfig.getString(currentConfigName + ".mobtype"); }
@@ -57,36 +62,184 @@ public class CustomMobManager {
 			//Loot
 			if(customMobConfig.contains(currentConfigName + ".loot"))
 			{
+				//custom item drops
 				Set<String> lootItems = customMobConfig.getConfigurationSection(currentConfigName + ".loot").getKeys(false);
 				Collection<ItemStack> items = new ArrayList<ItemStack>();
-			
+				customImportedMobs.get(i).lootDropChance = new ArrayList<Double>();
+				
 				for (String item: lootItems) {
-					if(customMobConfig.contains(currentConfigName + ".loot." + item + ".material") && customMobConfig.contains(currentConfigName + ".loot." + item + ".amount"))
+					
+					if(customMobConfig.contains(currentConfigName + ".loot." + item + ".material") && customMobConfig.contains(currentConfigName + ".loot." + item + ".amount" ) && customMobConfig.contains(currentConfigName + ".loot." + item + ".chance"))
 					{
 						Material itemMaterial = Material.getMaterial(customMobConfig.getString(currentConfigName + ".loot." + item + ".material"));
 						int itemAmount = customMobConfig.getInt(currentConfigName + ".loot." + item + ".amount");
 						items.add(new ItemStack(itemMaterial,itemAmount));
 						
-						ConfigMistake(itemMaterial.toString());
-						ConfigMistake(Integer.toString(itemAmount));
+						customImportedMobs.get(i).lootDropChance.add(customMobConfig.getDouble(currentConfigName + ".loot." + item + ".chance"));
 					}
 					else
 					{
-						ConfigMistake("no material or amount specified for: " + item + ". In customMob: " + currentConfigName);
+						ConfigMistake("No material or amount or chance specified for: " + item + " for customMob: " + currentConfigName);
 					}
 				}
 				
-				ConfigMistake(Integer.toString(items.size()));
-				if(items.size() != 0)
+				if(items.size() > 0)
 				{
 					customImportedMobs.get(i).loot = items;
 				}
 			}
+			
 			//target
 			if(customMobConfig.contains(currentConfigName + ".target")) { customImportedMobs.get(i).target = customMobConfig.getString(currentConfigName + ".target"); }
 			
+			//velocity
+			if(customMobConfig.contains(currentConfigName + ".velocity"))
+			{
+				if(customMobConfig.contains(currentConfigName + ".velocity.x") && customMobConfig.contains(currentConfigName + ".velocity.y") && customMobConfig.contains(currentConfigName + ".velocity.z"))
+				{
+					Double x = customMobConfig.getDouble(currentConfigName + ".velocity.x");
+					Double y = customMobConfig.getDouble(currentConfigName + ".velocity.y");
+					Double z = customMobConfig.getDouble(currentConfigName + ".velocity.z");
+					customImportedMobs.get(i).velocity = new Vector(x,y,z);
+				}
+				else
+				{
+					ConfigMistake("No x or y or z specified in velocity for customMob: " + currentConfigName);
+				}
+			}
+			
+			
+			//tpLocation
+			if(customMobConfig.contains(currentConfigName + ".tplocation"))
+			{
+				if(customMobConfig.contains(currentConfigName + ".tplocation.x") && customMobConfig.contains(currentConfigName + ".tplocation.y") && customMobConfig.contains(currentConfigName + ".tplocation.z"))
+				{
+					Double x = customMobConfig.getDouble(currentConfigName + ".tplocation.x");
+					Double y = customMobConfig.getDouble(currentConfigName + ".tplocation.y");
+					Double z = customMobConfig.getDouble(currentConfigName + ".tplocation.z");
+					customImportedMobs.get(i).tpLocation = new Location(null, x,y,z);
+				}
+				else
+				{
+					ConfigMistake("No x or y or z specified in velocity for customMob: " + currentConfigName);
+				}
+			}
+			
+			
+			//default item drops
+			if(customMobConfig.contains(currentConfigName + ".defaultdrops")) { customImportedMobs.get(i).dropDefaultLoot = customMobConfig.getBoolean(currentConfigName + ".defaultdrops"); }
+			
 			//canPickUpItems
-			if (customMobConfig.contains(currentConfigName + ".health")) { customImportedMobs.get(i).health = customMobConfig.getInt(currentConfigName + ".health"); }
+			if (customMobConfig.contains(currentConfigName + ".canpickupitems")) { customImportedMobs.get(i).canPickUpItems = customMobConfig.getBoolean(currentConfigName + ".canpickupitems"); }
+			
+			//despawnable
+			if(customMobConfig.contains(currentConfigName + ".despawnable")) { customImportedMobs.get(i).despawnable = customMobConfig.getBoolean(currentConfigName + ".despawnable"); }
+			
+			//silent
+			if (customMobConfig.contains(currentConfigName + ".silent")) { customImportedMobs.get(i).silent = customMobConfig.getBoolean(currentConfigName + ".silent"); }
+		
+			//potioneffects
+			if(customMobConfig.contains(currentConfigName + ".potioneffects"))
+			{
+				Set<String> potionsKeys = customMobConfig.getConfigurationSection(currentConfigName + ".potioneffects").getKeys(false);
+				Collection<PotionEffect> potionEffects = new ArrayList<PotionEffect>();
+				
+				for(String potionKey : potionsKeys)
+				{
+					if(customMobConfig.contains(currentConfigName + potionKey + ".potioneffecttype") && customMobConfig.contains(currentConfigName + potionKey + ".duration") && customMobConfig.contains(currentConfigName + potionKey + ".strength"))
+					{
+						PotionEffectType effect = PotionEffectType.getByName(customMobConfig.getString(currentConfigName + potionKey + ".potioneffecttype"));
+						int duration = customMobConfig.getInt(currentConfigName + potionKey + ".duration");
+						int strength = customMobConfig.getInt(currentConfigName + potionKey + ".strength");
+						potionEffects.add(new PotionEffect(effect,duration,strength));
+					}
+					else
+					{
+						ConfigMistake("No potioneffecttype or duration or strength specified in " + potionKey + "for customMob: " + currentConfigName);
+					}
+				}
+				
+				if(potionEffects.size() > 0)
+				{
+					customImportedMobs.get(i).potionEffects = potionEffects;
+				}
+			}
+			
+			//armor
+			if(customMobConfig.contains(currentConfigName + ".armor"))
+			{
+				//boots
+				if(customMobConfig.contains(currentConfigName + ".armor.boots"))
+				{
+					if(customMobConfig.contains(currentConfigName + ".armor.boots.material") && customMobConfig.contains(currentConfigName + ".armor.boots.dropchance"))
+					{
+						customImportedMobs.get(i).boots = new ItemStack(Material.getMaterial(customMobConfig.getString(currentConfigName + ".armor.boots.material")));
+						customImportedMobs.get(i).bootsDropChance = (float) customMobConfig.getDouble(currentConfigName + ".armor.boots.dropchance");
+					}
+					else
+					{
+						ConfigMistake("No material or dropchance specified for boots for customMob: " + currentConfigName);
+					}
+				}
+				
+				//leggings
+				if(customMobConfig.contains(currentConfigName + ".armor.leggings"))
+				{
+					if(customMobConfig.contains(currentConfigName + ".armor.leggings.material") && customMobConfig.contains(currentConfigName + ".armor.leggings.dropchance"))
+					{
+						customImportedMobs.get(i).leggings = new ItemStack(Material.getMaterial(customMobConfig.getString(currentConfigName + ".armor.leggings.material")));
+						customImportedMobs.get(i).leggingsDropChance = (float) customMobConfig.getDouble(currentConfigName + ".armor.leggings.dropchance");
+					}
+					else
+					{
+						ConfigMistake("No material or dropchance specified for leggings for customMob: " + currentConfigName);
+					}
+				}
+				
+				//chestplate
+				if(customMobConfig.contains(currentConfigName + ".armor.chestplate"))
+				{
+					if(customMobConfig.contains(currentConfigName + ".armor.chestplate.material") && customMobConfig.contains(currentConfigName + ".armor.chestplate.dropchance"))
+					{
+						customImportedMobs.get(i).chestPlate = new ItemStack(Material.getMaterial(customMobConfig.getString(currentConfigName + ".armor.chestplate.material")));
+						customImportedMobs.get(i).chestPlateDropChance = (float) customMobConfig.getDouble(currentConfigName + ".armor.chestplate.dropchance");
+					}
+					else
+					{
+						ConfigMistake("No material or dropchance specified for chestplate for customMob: " + currentConfigName);
+					}
+				}
+				
+				//helmet
+				if(customMobConfig.contains(currentConfigName + ".armor.helmet"))
+				{
+					if(customMobConfig.contains(currentConfigName + ".armor.helmet.material") && customMobConfig.contains(currentConfigName + ".armor.helmet.dropchance"))
+					{
+						customImportedMobs.get(i).helmet = new ItemStack(Material.getMaterial(customMobConfig.getString(currentConfigName + ".armor.helmet.material")));
+						customImportedMobs.get(i).helmetDropChance = (float) customMobConfig.getDouble(currentConfigName + ".armor.helmet.dropchance");
+					}
+					else
+					{
+						ConfigMistake("No material or dropchance specified for helmet for customMob: " + currentConfigName);
+					}
+				}
+				
+				//mainhand
+				if(customMobConfig.contains(currentConfigName + ".armor.mainhand"))
+				{
+					if(customMobConfig.contains(currentConfigName + ".armor.mainhand.material") && customMobConfig.contains(currentConfigName + ".armor.mainhand.dropchance"))
+					{
+						customImportedMobs.get(i).mainHand = new ItemStack(Material.getMaterial(customMobConfig.getString(currentConfigName + ".armor.mainhand.material")));
+						customImportedMobs.get(i).mainHandDropChance = (float) customMobConfig.getDouble(currentConfigName + ".armor.mainhand.dropchance");
+					}
+					else
+					{
+						ConfigMistake("No material or dropchance specified for mainhand for customMob: " + currentConfigName);
+					}
+				}
+
+			}
+		
 		}
 	}
 	

@@ -27,7 +27,6 @@ public class Main extends JavaPlugin {
 		customMobsManager = new CustomMobManager(this);
 		customMobsManager.ImportCustomMobsFromConfig();
 		
-		
 		///
 		// COMMANDS
 		///
@@ -51,6 +50,7 @@ public class Main extends JavaPlugin {
 		
 		
 		getLogger().info(ChatColor.GREEN + "Plugin has been enabled!"); // Let the user know that the plugin is enabled!
+
 	}
 
 	@Override
